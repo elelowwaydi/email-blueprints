@@ -1,0 +1,923 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- <html xmlns="http://www.w3.org/1999/xhtml"> -->
+<html xmlns:v="urn:schemas-microsoft-com:vml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Modular Template Patterns</title>
+
+    <!--
+        	This email is an experimental proof-of-concept based on the
+            idea that the most common design patterns seen in email can
+            be placed in modular blocks and moved around to create
+            different designs.
+
+			The same principle is used to build the email templates in
+            MailChimp's Drag-and-Drop email editor.
+
+			This email is optimized for mobile email clients, and even
+            works relatively well in the Android Gmail App, which does
+            not support Media Queries, but does have limited mobile-
+            friendly functionality.
+
+			While this coding method is very flexible, it can be more
+            brittle than traditionally-coded emails, particularly in
+            Microsoft Outlook 2007-2010. Outlook-specific conditional
+            CSS is included to counteract the inconsistencies that
+            crop up.
+
+            For more information on HTML email design and development,
+            visit http://templates.mailchimp.com
+        -->
+
+    <style type="text/css">
+        v\:* {
+            behavior: url(#default#VML);
+            display: inline-block;
+        }
+        /*////// RESET STYLES //////*/
+
+        body,
+        #bodyTable,
+        #bodyCell {
+            height: 100% !important;
+            margin: 0;
+            padding: 0;
+            width: 100% !important;
+            font-family: Helvetica, Arial, sans-serif;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        img,
+        a img {
+            border: 0;
+            outline: none;
+            text-decoration: none;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin: 0;
+            padding: 0;
+        }
+
+        p {
+            margin: 1em 0;
+        }
+        /*////// CLIENT-SPECIFIC STYLES //////*/
+
+        .ReadMsgBody {
+            width: 100%;
+        }
+
+        .ExternalClass {
+            width: 100%;
+        }
+        /* Force Hotmail/Outlook.com to display emails at full width. */
+
+        .ExternalClass,
+        .ExternalClass p,
+        .ExternalClass span,
+        .ExternalClass font,
+        .ExternalClass td,
+        .ExternalClass div {
+            line-height: 100%;
+        }
+        /* Force Hotmail/Outlook.com to display line heights normally. */
+
+        table,
+        td {
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+        }
+        /* Remove spacing between tables in Outlook 2007 and up. */
+
+        #outlook a {
+            padding: 0;
+        }
+        /* Force Outlook 2007 and up to provide a "view in browser" message. */
+
+        img {
+            -ms-interpolation-mode: bicubic;
+        }
+        /* Force IE to smoothly render resized images. */
+
+        body,
+        table,
+        td,
+        p,
+        a,
+        li,
+        blockquote {
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+        /* Prevent Windows- and Webkit-based mobile platforms from changing declared text sizes. */
+        /*////// FRAMEWORK STYLES //////*/
+
+        .flexibleContainerCell {
+            padding-top: 20px;
+            padding-Right: 20px;
+            padding-Left: 20px;
+        }
+
+        .flexibleImage {
+            height: auto;
+        }
+
+        .bottomShim {
+            padding-bottom: 20px;
+        }
+
+        .imageContent,
+        .imageContentLast {
+            padding-bottom: 20px;
+        }
+
+        .nestedContainerCell {
+            padding-top: 20px;
+            padding-Right: 20px;
+            padding-Left: 20px;
+        }
+        /*////// GENERAL STYLES //////*/
+
+        body,
+        #bodyTable {
+            background-color: #F5F5F5;
+        }
+
+        #bodyCell {
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+
+        #emailBody {
+            background-color: #FFFFFF;
+            border: 1px solid #DDDDDD;
+            border-collapse: separate;
+            border-radius: 4px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: #202020;
+            font-family: Helvetica;
+            font-size: 20px;
+            line-height: 125%;
+            text-align: Left;
+        }
+
+        .textContent,
+        .textContentLast {
+            color: #404040;
+            font-family: Helvetica;
+            font-size: 16px;
+            line-height: 125%;
+            text-align: Left;
+            padding-bottom: 20px;
+        }
+
+        .textContent a,
+        .textContentLast a {
+            color: #2C9AB7;
+            text-decoration: underline;
+        }
+
+        .nestedContainer {
+            background-color: #E5E5E5;
+            border: 1px solid #CCCCCC;
+        }
+
+        .emailButton {
+            background-color: #2C9AB7;
+            border-collapse: separate;
+            border-radius: 4px;
+        }
+
+        .buttonContent {
+            color: #FFFFFF;
+            font-family: Helvetica;
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 100%;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .buttonContent a {
+            color: #FFFFFF;
+            display: block;
+            text-decoration: none;
+        }
+
+        .emailCalendar {
+            background-color: #FFFFFF;
+            border: 1px solid #CCCCCC;
+        }
+
+        .emailCalendarMonth {
+            background-color: #2C9AB7;
+            color: #FFFFFF;
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+
+        .emailCalendarDay {
+            color: #2C9AB7;
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 60px;
+            font-weight: bold;
+            line-height: 100%;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            text-align: center;
+        }
+        #hand {
+          background: url('http://psdwizard.net/preview/dco-email/03/images/hand_terms.png');
+        }
+
+        .social-btn-con a {
+            margin-left: 5px !important;
+        }
+
+        .nav-container {
+            padding-top: 15px;
+            padding-bottom: 15px;
+            background-color: #F99E26;
+        }
+
+        .nav span {
+            padding-top: 15px;
+            padding-right: 10px;
+            padding-bottom: 15px;
+            padding-left: 10px;
+            background-color: #F99E26;
+
+        }
+
+        .nav span a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 13px;
+        }
+
+        .jumbotron h1 {
+            font-size: 60px;
+            color: #fff;
+        }
+
+        .jumbotron h2 {
+            font-size: 23px;
+            color: #fff;
+        }
+
+        .emailButton.flexibleContainer {
+            padding-top: 0;
+        }
+
+        .email-btn {
+            background-color: #F99E26;
+            border-radius: 4px;
+            padding: 10px;
+        }
+
+        .block-2 {
+            font-size: 14px;
+            line-height: 125%;
+        }
+
+        .block-2 h2 {
+            font-size: 28px;
+            font-weight: normal;
+            color: #4a666f;
+        }
+
+        .block-2 span {
+            line-height: 23px;
+        }
+
+        .block-3 {
+            font-size: 14px;
+        }
+
+        .block-3 h2 {
+            font-size: 28px;
+            font-weight: normal;
+            color: #4a666f;
+        }
+
+        .block-3 span {
+            line-height: 23px;
+        }
+
+        .block-4 {
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .block-4 h2 {
+            font-size: 28px;
+            font-weight: normal;
+        }
+
+        .block-4 span {
+            line-height: 23px;
+        }
+
+        .block-5 {
+          color: #fff;
+        }
+        .block-5-title {
+          font-size: 24px;
+        }
+        .customer-sat img {
+            display: inline-block;
+        }
+
+        .customer-sat span {
+            display: inline-block;
+            font-size: 14px;
+            color: #fff;
+        }
+        /*////// MOBILE STYLES //////*/
+
+        @media only screen and (max-width: 480px) {
+            /*////// CLIENT-SPECIFIC STYLES //////*/
+            body {
+                width: 100% !important;
+                min-width: 100% !important;
+            }
+            /* Force iOS Mail to render the email at full width. */
+            /*////// FRAMEWORK STYLES //////*/
+            /*
+					CSS selectors are written in attribute
+					selector format to prevent Yahoo Mail
+					from rendering media query styles on
+					desktop.
+				*/
+            table[id="emailBody"],
+            table[class="flexibleContainer"] {
+                width: 100% !important;
+            }
+            /*
+					The following style rule makes any
+					image classed with 'flexibleImage'
+					fluid when the query activates.
+					Make sure you add an inline max-width
+					to those images to prevent them
+					from blowing out.
+				*/
+            img[class="flexibleImage"] {
+                height: auto !important;
+                width: 100% !important;
+            }
+            /*
+					Make buttons in the email span the
+					full width of their container, allowing
+					for left- or right-handed ease of use.
+				*/
+            table[class="emailButton"] {
+                width: 100% !important;
+            }
+            td[class="buttonContent"] {
+                padding: 0 !important;
+            }
+            td[class="buttonContent"] a {
+                padding: 15px !important;
+            }
+            td[class="textContentLast"],
+            td[class="imageContentLast"] {
+                padding-top: 20px !important;
+            }
+            /*////// GENERAL STYLES //////*/
+            td[id="bodyCell"] {
+                padding-top: 10px !important;
+                padding-Right: 10px !important;
+                padding-Left: 10px !important;
+            }
+        }
+    </style>
+    <!--
+        	Outlook Conditional CSS
+
+            These two style blocks target Outlook 2007 & 2010 specifically, forcing
+            columns into a single vertical stack as on mobile clients. This is
+            primarily done to avoid the 'page break bug' and is optional.
+
+            More information here:
+			http://templates.mailchimp.com/development/css/outlook-conditional-css
+        -->
+    <!--[if mso 12]>
+            <style type="text/css">
+            	.flexibleContainer{display:block !important; width:100% !important;}
+            </style>
+        <![endif]-->
+    <!--[if mso 14]>
+            <style type="text/css">
+            	.flexibleContainer{display:block !important; width:100% !important;}
+            </style>
+        <![endif]-->
+</head>
+
+<body>
+    <center>
+        <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable">
+            <tr>
+                <td align="center" valign="top" id="bodyCell">
+                    <!-- EMAIL CONTAINER // -->
+                    <!--
+                        	The table "emailBody" is the email's container.
+                            Its width can be set to 100% for a color band
+                            that spans the width of the page.
+                        -->
+                    <table border="0" cellpadding="0" cellspacing="0" width="600" id="emailBody">
+
+
+                        <!-- MODULE ROW // -->
+                        <!--
+                            	To move or duplicate any of the design patterns
+                                in this email, simply move or copy the entire
+                                MODULE ROW section for each content block.
+                            -->
+                        <tr>
+                            <td align="center" valign="top">
+                                <!-- CENTERING TABLE // -->
+                                <!--
+                                    	The centering table keeps the content
+                                        tables centered in the emailBody table,
+                                        in case its width is set to 100%.
+                                    -->
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    <tr>
+                                        <td align="center" valign="top">
+                                            <!-- FLEXIBLE CONTAINER // -->
+                                            <!--
+                                                	The flexible container has a set width
+                                                    that gets overridden by the media query.
+                                                    Most content tables within can then be
+                                                    given 100% widths.
+                                                -->
+                                            <table border="0" cellpadding="0" cellspacing="0" width="600" class="flexibleContainer">
+                                                <tr>
+                                                    <td align="center" valign="top" width="600" class="flexibleContainerCell">
+
+
+                                                        <!-- CONTENT TABLE // -->
+                                                        <!--
+                                                            	The content table is the first element
+                                                                that's entirely separate from the structural
+                                                                framework of the email.
+                                                            -->
+                                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                            <tr>
+                                                                <td valign="top" class="textContent">
+                                                                    <a href="http://decoratingcentreonline.co.uk/"><img src="http://psdwizard.net/preview/dco-email/03/images/logo.png" alt="Decorating Centre Online"></a>
+                                                                </td>
+                                                                <td valign="top" class="social-btn-con" style="text-align:right;padding-top: 20px;">
+                                                                    <a href="https://www.facebook.com/Decorating-Center-Online-1129638930391244/"><img src="http://psdwizard.net/preview/dco-email/03/images/fb.png"></a>
+                                                                    <a href="https://twitter.com/DCOnline_UK"><img src="http://psdwizard.net/preview/dco-email/03/images/twitter.png"></a>
+                                                                    <a href="#"><img src="http://psdwizard.net/preview/dco-email/03/images/gplus.png"></a>
+                                                                    <a href="https://www.pinterest.com/DCOnline_UK/"><img src="http://psdwizard.net/preview/dco-email/03/images/pinterest.png"></a>
+                                                                    <a href="#"><img src="http://psdwizard.net/preview/dco-email/03/images/linkedin.png"></a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                        <!-- // CONTENT TABLE -->
+
+
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <!-- // FLEXIBLE CONTAINER -->
+                                        </td>
+                                    </tr>
+                                </table>
+                                <!-- // CENTERING TABLE -->
+                            </td>
+                        </tr>
+                        <!-- // MODULE ROW -->
+
+                        <!-- MODULE ROW // -->
+                        <tr>
+                            <td align="" valign="top">
+                                <!-- CENTERING TABLE // -->
+                                <!--
+                                    	The centering table keeps the content
+                                        tables centered in the emailBody table,
+                                        in case its width is set to 100%.
+                                    -->
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    <tr>
+                                        <td align="center" valign="top">
+                                            <!-- FLEXIBLE CONTAINER // -->
+                                            <!--
+                                                	The flexible container has a set width
+                                                    that gets overridden by the media query.
+                                                    Most content tables within can then be
+                                                    given 100% widths.
+                                                -->
+                                            <table border="0" cellpadding="0" cellspacing="0" width="600" class="">
+                                                <tr>
+                                                    <td align="center" valign="top" width="600" class="nav-container">
+                                                        <!-- CONTENT TABLE // -->
+                                                        <!--
+                                                            	The content table is the first element
+                                                                that's entirely separate from the structural
+                                                                framework of the email.
+                                                            -->
+                                                        <table>
+                                                            <tr>
+                                                                <td valign="top" class="nav">
+                                                                    <span style="border-right: solid 1px #E08E23;"><a href="http://decoratingcentreonline.co.uk/paints">PAINTS</a></span>
+                                                                    <span style="border-right: solid 1px #E08E23;"><a href="http://decoratingcentreonline.co.uk/wallpapers">WALLPAPERS</a></span>
+                                                                    <span style="border-right: solid 1px #E08E23;"><a href="http://decoratingcentreonline.co.uk/tools">TOOLS</a></span>
+                                                                    <span style="border-right: solid 1px #E08E23;"><a href="http://decoratingcentreonline.co.uk/inspiration">INSPIRATION</a></span>
+                                                                    <span style="border-right: solid 1px #E08E23;"><a href="http://decoratingcentreonline.co.uk/interior">INTERIOR</a></span>
+                                                                    <span><a href="http://decoratingcentreonline.co.uk/#">HELP & ADVICE</a></span>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                        <!-- // CONTENT TABLE -->
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <!-- // FLEXIBLE CONTAINER -->
+                                        </td>
+                                    </tr>
+                                </table>
+                                <!-- // CENTERING TABLE -->
+                            </td>
+                        </tr>
+                        <!-- // MODULE ROW -->
+
+
+
+
+                        <!-- MODULE ROW // -->
+                        <tr>
+                            <td align="center" valign="top">
+                                <!-- CENTERING TABLE // -->
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    <tr>
+                                        <td align="center" valign="top">
+                                            <!-- FLEXIBLE CONTAINER // -->
+                                            <table border="0" cellpadding="0" cellspacing="0" width="600" class="">
+                                                <tr>
+                                                    <td valign="top" width="600" class="" style="padding-top:0;padding-right:0;padding-bottom:0;padding-left:0;">
+                                                        <!-- CONTENT TABLE // -->
+                                                        <!--
+                                                            	In multi-column content blocks, the
+                                                                content tables are given set widths
+                                                                and the flexibleContainer class.
+                                                            -->
+                                                        <table align="Left" border="0" cellpadding="0" cellspacing="0" width="260" class="">
+                                                            <tr>
+                                                                <td background="http://psdwizard.net/preview/dco-email/03/images/banner.jpg" height="400" width="600" bgcolor="#cccccc">
+                                                                    <!--[if gte mso 9]>
+                                                                    <v:image xmlns:v="urn:schemas-microsoft-com:vml" id="theImage" style='behavior: url(#default#VML); display:inline-block;position:absolute; height:402px; width:600px;top:0;left:-2.5;border:0;z-index:1;' src="http://psdwizard.net/preview/dco-email/01/images/banner.jpg"/>
+                                                                    <v:shape xmlns:v="urn:schemas-microsoft-com:vml" id="theText" style='behavior: url(#default#VML); display:inline-block;position:absolute; height:407px; width:610px;top:-5;left:-10;border:0;z-index:2;'>
+                                                                    <div>
+                                                                    <![endif]-->
+                                                                    <!-- This is where you nest a table with the content that will float over the image -->
+                                                                    <table width="600" cellpadding="0" cellspacing="0" border="0">
+                                                                        <tr>
+                                                                            <td width="600" height="400" valign="center" class="jumbotron flexibleContainerCell">
+                                                                                <h1>Hello,</h1>
+                                                                                <h2>Thanks for buying and welcome <br>
+                                                                                to Decorating Centre Online
+                                                                              </h2>
+                                                                                <a href="http://decoratingcentreonline.co.uk/"><img src="http://psdwizard.net/preview/dco-email/03/images/track-btn.png" alt="Track your order!"></a>
+                                                                                <!-- <table border="0" cellpadding="0" cellspacing="0" width="260" class="emailButton">
+                                                                                  <tr>
+                                                                                      <td align="center" valign="middle" class="buttonContent">
+                                                                                          <a href="#" target="_blank">Purchase Now</a>
+                                                                                      </td>
+                                                                                  </tr>
+                                                                              </table> -->
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                    <!-- This ends the nested table content -->
+                                                                    <!--[if gte mso 9]>
+                                                                        </div>
+                                                                        </v:shape>
+                                                                        <![endif]-->
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                        <!-- // CONTENT TABLE -->
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <!-- // FLEXIBLE CONTAINER -->
+                                        </td>
+                                    </tr>
+                                </table>
+                                <!-- // CENTERING TABLE -->
+                            </td>
+                        </tr>
+                        <!-- // MODULE ROW -->
+
+
+                        <!-- MODULE ROW // -->
+                        <tr>
+                            <td align="center" valign="top">
+                                <!-- CENTERING TABLE // -->
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    <tr>
+                                        <td align="center" valign="top">
+                                            <!-- FLEXIBLE CONTAINER // -->
+                                            <table border="0" cellpadding="0" cellspacing="0" width="600" class="flexibleContainer">
+                                                <tr>
+                                                    <td valign="top" width="600" class="flexibleContainerCell">
+
+
+                                                        <!-- CONTENT TABLE // -->
+                                                        <table align="Left" border="0" cellpadding="0" cellspacing="0" width="200" class="flexibleContainer">
+                                                            <tr>
+                                                                <td align="Left" valign="top" class="imageContent">
+                                                                    <img src="http://psdwizard.net/preview/dco-email/03/images/paint.png" width="200" class="flexibleImage" style="max-width:200px;margin-left: auto;margin-right:auto;" />
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                        <!-- // CONTENT TABLE -->
+
+
+                                                        <!-- CONTENT TABLE // -->
+                                                        <table align="Right" border="0" cellpadding="0" cellspacing="0" width="340" class="flexibleContainer">
+                                                            <tr>
+                                                                <td valign="center" class="textContent block-2">
+                                                                    <h2>We'll be sending you the good stuff</h2>
+                                                                    <span>
+                                                                         From now on, you'll be the first to know about our exclusive deals, great competitions,
+                                                                       and anything new to get excited about! We'll be sending you newsletter to keep you updated.
+                                                                     </span>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                        <!-- // CONTENT TABLE -->
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <!-- // FLEXIBLE CONTAINER -->
+                                        </td>
+                                    </tr>
+                                </table>
+                                <!-- // CENTERING TABLE -->
+                            </td>
+                        </tr>
+                        <!-- // MODULE ROW -->
+
+
+                        <!-- MODULE ROW // -->
+                        <tr>
+                            <td align="center" valign="top">
+                                <!-- CENTERING TABLE // -->
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #EAEFF2;">
+                                    <tr>
+                                        <td align="center" valign="top">
+                                            <!-- FLEXIBLE CONTAINER // -->
+                                            <table border="0" cellpadding="0" cellspacing="0" width="600" class="flexibleContainer">
+                                                <tr>
+                                                    <td valign="top" width="600" class="flexibleContainerCell">
+
+
+                                                        <!-- CONTENT TABLE // -->
+                                                        <!--
+                                                            	Keeping the table markup in its original
+                                                                order and swapping the align attribute values
+                                                                allows the tables to wrap in the correct order
+                                                                on small displays.
+                                                            -->
+                                                        <table align="Right" border="0" cellpadding="0" cellspacing="0" width="200" class="flexibleContainer">
+                                                            <tr>
+                                                                <td align="Left" valign="top" class="imageContent" style="padding: 20px;">
+                                                                    <img src="http://psdwizard.net/preview/dco-email/03/images/clock.png" width="" class="flexibleImage" style="max-width:200px;margin-left:auto;margin-right:auto;" />
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                        <!-- // CONTENT TABLE -->
+
+
+                                                        <!-- CONTENT TABLE // -->
+                                                        <table align="Left" border="0" cellpadding="0" cellspacing="0" width="340" class="flexibleContainer">
+                                                            <tr>
+                                                                <td valign="center" class="textContent block-3">
+                                                                    <h2>We're independent and <br> interactive</h2>
+                                                                    <span>
+                                                                      Need any help or advice? We have our product experts
+                                                                      waiting on the other line to assist you. Cath our Support Team via phone,
+                                                                      email or even chat. Our support hotline is 01234 789000 <br> Give us a ring now!
+                                                                    </span>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                        <!-- // CONTENT TABLE -->
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <!-- // FLEXIBLE CONTAINER -->
+                                        </td>
+                                    </tr>
+                                </table>
+                                <!-- // CENTERING TABLE -->
+                            </td>
+                        </tr>
+                        <!-- // MODULE ROW -->
+
+                        <!-- MODULE ROW // -->
+                        <tr>
+                            <td align="center" valign="top">
+                                <!-- CENTERING TABLE // -->
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    <tr>
+                                        <td align="center" valign="top">
+                                            <!-- FLEXIBLE CONTAINER // -->
+                                            <table border="0" cellpadding="0" cellspacing="0" width="600" class="">
+                                                <tr>
+                                                    <td valign="top" width="600" class="" style="padding-top:0;padding-right:0;padding-bottom:0;padding-left:0;">
+                                                        <!-- CONTENT TABLE // -->
+                                                        <!--
+                                                            	In multi-column content blocks, the
+                                                                content tables are given set widths
+                                                                and the flexibleContainer class.
+                                                            -->
+                                                        <table align="Left" border="0" cellpadding="0" cellspacing="0" width="260" class="">
+                                                            <tr>
+                                                                <td id="hand" height="240" width="600" bgcolor="#cccccc">
+                                                                    <!--[if gte mso 9]>
+                                                                    <v:image xmlns:v="urn:schemas-microsoft-com:vml" id="theImage" style='behavior: url(#default#VML); display:inline-block;position:absolute; height:240px; width:600px;top:0;left:-2.5;border:0;z-index:1;' src="http://psdwizard.net/preview/dco-email/01/images/hand_tems.png"/>
+                                                                    <v:shape xmlns:v="urn:schemas-microsoft-com:vml" id="theText" style='behavior: url(#default#VML); display:inline-block;position:absolute; height:240px; width:610px;top:-5;left:-10;border:0;z-index:2;'>
+                                                                    <div>
+                                                                    <![endif]-->
+                                                                    <!-- This is where you nest a table with the content that will float over the image -->
+                                                                    <table width="600" cellpadding="0" cellspacing="0" border="0">
+                                                                        <tr>
+                                                                            <td width="600" height="" valign="center" class="jumbotron flexibleContainerCell block-4">
+                                                                                <h2>
+                                                                                  Check out our Terms and<br> Conditions
+                                                                                </h2>
+                                                                                <span>
+                                                                                To even know your rights and what you have<br>
+                                                                                 agreed prior to ordering to products, check out<br>
+                                                                                  our Terms and Conditions.
+                                                                              </span>
+                                                                                <!-- <table border="0" cellpadding="0" cellspacing="0" width="260" class="emailButton">
+                                                                                  <tr>
+                                                                                      <td align="center" valign="middle" class="buttonContent">
+                                                                                          <a href="#" target="_blank">Purchase Now</a>
+                                                                                      </td>
+                                                                                  </tr>
+                                                                              </table> -->
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                    <!-- This ends the nested table content -->
+                                                                    <!--[if gte mso 9]>
+                                                                        </div>
+                                                                        </v:shape>
+                                                                        <![endif]-->
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                        <!-- // CONTENT TABLE -->
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <!-- // FLEXIBLE CONTAINER -->
+                                        </td>
+                                    </tr>
+                                </table>
+                                <!-- // CENTERING TABLE -->
+                            </td>
+                        </tr>
+                        <!-- // MODULE ROW -->
+
+                        <!-- MODULE ROW // -->
+                        <tr>
+                            <td align="" valign="top">
+                                <!-- CENTERING TABLE // -->
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#4A666F;color: #fff;">
+                                    <tr>
+                                        <td align="center" valign="top">
+
+                                            <table border="0" cellpadding="0" cellspacing="0" width="600" class="flexibleContainer">
+                                                <tr>
+                                                    <td align="center" valign="top" width="600" class="">
+                                                        <!-- CONTENT TABLE // -->
+                                                        <table>
+                                                            <tr>
+                                                                <td valign="top" class="flexibleContainerCell block-5-title" style="color:#fff;">
+                                                                    Why shop with Decorating Centre Online?
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                        <!-- // CONTENT TABLE -->
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <!-- // FLEXIBLE CONTAINER -->
+                                        </td>
+                                    </tr>
+                                </table>
+                                <!-- // CENTERING TABLE -->
+                            </td>
+                        </tr>
+                        <!-- // MODULE ROW -->
+
+
+
+                        <!-- MODULE ROW -->
+                        <tr>
+                            <td align="center" valign="top">
+                                <!-- BEGIN COLUMNS // -->
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateColumns" style="background-color:#4A666F;color: #fff;">
+                                    <tr mc:repeatable>
+                                        <td align="center" valign="top" class="templateColumnContainer" style="padding-top:20px; width: 200px;">
+                                            <table border="0" cellpadding="" cellspacing="0" width="100%">
+                                                <tr>
+                                                    <td class="leftColumnContent customer-sat block-5-item" style="padding-top: 20px;padding-right: 0; padding-bottom: 10px; padding-left: 20px;">
+                                                        <img src="http://psdwizard.net/preview/dco-email/03/images/satisfaction1.png" class="columnImage" mc:label="left_column_image" mc:edit="left_column_image" />
+                                                        <span>98% Customer<br>Satisfaction</span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td align="center" valign="top" class="templateColumnContainer" style="padding-top:20px;width: 200px;">
+                                            <table border="0" cellpadding="" cellspacing="0" width="100%">
+                                                <tr>
+                                                  <td class="leftColumnContent customer-sat block-5-item" style="padding-top: 20px;padding-right: 10px; padding-bottom: 10px; padding-left: 10px;">
+                                                      <img src="http://psdwizard.net/preview/dco-email/03/images/return2.png" style="" class="columnImage" mc:label="left_column_image" mc:edit="left_column_image" />
+                                                      <span>30 Days free<br>return</span>
+                                                  </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td align="center" valign="top" class="templateColumnContainer" style="padding-top:20px; width: 200px;">
+                                            <table border="0" cellpadding="" cellspacing="0" width="100%">
+                                                <tr>
+                                                    <td class="leftColumnContent customer-sat block-5-item" style="padding-top: 20px;padding-right: 20px; padding-bottom: 10px; padding-left: 10px;">
+                                                        <img src="http://psdwizard.net/preview/dco-email/03/images/custom2.png" style="" class="columnImage" mc:label="left_column_image" mc:edit="left_column_image" />
+                                                        <span style="font-size:14px;">24 Hour<br>customer support</span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+
+                                    <tr mc:repeatable>
+                                        <td align="center" valign="top" class="templateColumnContainer" style="padding-top:0; width: 200px;">
+                                            <table border="0" cellpadding="" cellspacing="0" width="100%">
+                                                <tr>
+                                                    <td class="leftColumnContent customer-sat block-5-item" style="padding-top: 0;padding-right: 0; padding-bottom: 30px; padding-left: 20px;">
+                                                        <img src="http://psdwizard.net/preview/dco-email/03/images/truck.png" class="columnImage" mc:label="left_column_image" mc:edit="left_column_image" />
+                                                        <span>Free delivery<br>on all orders</span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td align="center" valign="top" class="templateColumnContainer" style="padding-top:0;width: 200px;">
+                                            <table border="0" cellpadding="" cellspacing="0" width="100%">
+                                                <tr>
+                                                  <td class="leftColumnContent customer-sat block-5-item" style="padding-top: 0px;padding-right: 10px; padding-bottom: 30px; padding-left: 10px;">
+                                                      <img src="http://psdwizard.net/preview/dco-email/03/images/tracking2.png" style="" class="columnImage" mc:label="left_column_image" mc:edit="left_column_image" />
+                                                      <span>Order<br>tracking</span>
+                                                  </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+
+                                    </tr>
+                                </table>
+                                <!-- // END COLUMNS -->
+                            </td>
+                        </tr>
+
+                        <!-- // MODULE ROW -->
+
+
+                    </table>
+                    <!-- // EMAIL CONTAINER -->
+                </td>
+            </tr>
+        </table>
+    </center>
+</body>
+
+</html>
