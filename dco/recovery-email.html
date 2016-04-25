@@ -5,7 +5,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Modular Template Patterns</title>
+    <title>Abandon basket confirmation</title>
     <!--
         This email is an experimental proof-of-concept based on the
         idea that the most common design patterns seen in email can
@@ -307,6 +307,16 @@
                 width: 100% !important;
                 min-width: 100% !important;
             }
+            .break {
+              padding-top: 0 !important;
+            }
+            #footer-1,
+            #footer-2,
+            #footer-3,
+            #footer-4 {
+              margin-bottom: 10px;
+            }
+
             /* Force iOS Mail to render the email at full width. */
             /*////// FRAMEWORK STYLES //////*/
             /*
@@ -580,7 +590,7 @@
                                                         <table border="0" cellpadding="0" cellspacing="0" width="100%">
                                                             <tr>
                                                                 <td valign="top" class="">
-                                                                    <h3>£0.01</h3>
+                                                                    <h3><span style="font-size:30px;color:#F99E26;">£0.01</span></h3>
                                                                     <span> Price updated as of 21 January 2015</span>
                                                                 </td>
                                                             </tr>
@@ -598,6 +608,7 @@
                         </tr>
                         <!-- // MODULE ROW -->
 
+
                         <!-- MODULE ROW // -->
                         <tr>
                             <td align="center" valign="top">
@@ -607,11 +618,19 @@
                                         <td align="center" valign="top">
                                             <table border="0" cellpadding="0" cellspacing="0" width="600" class="flexibleContainer">
                                                 <tr>
-                                                    <td align="center" valign="top" width="600" class="flexibleContainerCell">
+                                                    <td align="center" valign="top" width="600" class="flexibleContainerCell" style="padding-bottom: 20px;">
                                                         <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                                            <tr>
-                                                                <td class="textContent">
-                                                                    <a href="#"><img src="http://psdwizard.net/preview/dco-email/03/images/return-basket.png" alt="Return to your basket now and continue shopping"></a>
+                                                            <tr style="background-color:#F99F27;border-radius: 4px;">
+                                                                <td class="" style="padding-left: 20px;border-radius: 5px 0 0 5px;">
+                                                                    <a href="#" style="text-decoration:none;">
+                                                                        <span class="" style="color: #fff;font-size: 23px;">
+                                                                        Return to your basket now <br>
+                                                                        and continue shopping
+                                                                      </span>
+                                                                    </a>
+                                                                </td>
+                                                                <td class="" style="text-align:right;padding-right: 20px;border-radius: 0 5px 5px 0;">
+                                                                    <a href="#"><img src="http://psdwizard.net/preview/dco-email/03/images/cart.png"></a>
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -628,6 +647,8 @@
                         </tr>
                         <!-- // MODULE ROW -->
 
+
+
                         <!-- MODULE ROW -->
                         <tr>
                             <td align="center" valign="top">
@@ -639,7 +660,7 @@
                                                 <tr>
                                                     <td class="leftColumnContent customer-sat block-5-item" style="padding-top: 20px;padding-right: 0; padding-bottom: 10px; padding-left: 20px;">
                                                         <img src="http://psdwizard.net/preview/dco-email/03/images/satisfaction1.png" class="columnImage" mc:label="left_column_image" mc:edit="left_column_image" />
-                                                        <span>98% Customer<br>Satisfaction</span>
+                                                        <span style="color:#fff">98% Customer<br>Satisfaction</span>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -649,7 +670,7 @@
                                                 <tr>
                                                     <td class="leftColumnContent customer-sat block-5-item" style="padding-top: 20px;padding-right: 10px; padding-bottom: 10px; padding-left: 10px;">
                                                         <img src="http://psdwizard.net/preview/dco-email/03/images/return2.png" style="" class="columnImage" mc:label="left_column_image" mc:edit="left_column_image" />
-                                                        <span>30 Days free<br>return</span>
+                                                        <span style="color:#fff">30 Days free<br>return</span>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -659,7 +680,7 @@
                                                 <tr>
                                                     <td class="leftColumnContent customer-sat block-5-item" style="padding-top: 20px;padding-right: 20px; padding-bottom: 10px; padding-left: 10px;">
                                                         <img src="http://psdwizard.net/preview/dco-email/03/images/custom2.png" style="" class="columnImage" mc:label="left_column_image" mc:edit="left_column_image" />
-                                                        <span style="font-size:14px;">24 Hour<br>customer support</span>
+                                                        <span style="font-size:14px;color:#fff;">24 Hour<br>customer support</span>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -672,7 +693,7 @@
                                                 <tr>
                                                     <td class="leftColumnContent customer-sat block-5-item" style="padding-top: 0;padding-right: 0; padding-bottom: 30px; padding-left: 20px;">
                                                         <img src="http://psdwizard.net/preview/dco-email/03/images/truck.png" class="columnImage" mc:label="left_column_image" mc:edit="left_column_image" />
-                                                        <span>Free delivery<br>on all orders</span>
+                                                        <span style="color:#fff">Free delivery<br>on all orders</span>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -726,67 +747,82 @@
                         </tr>
                         <!-- // MODULE ROW -->
 
-
-
-
                         <!-- MODULE ROW // -->
                         <tr>
-                            <td align="center" valign="top">
-                                <!-- CENTERING TABLE // -->
-                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <td align="center" valign="top" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
                                     <tr>
-                                        <td align="center" valign="top">
-                                            <!-- FLEXIBLE CONTAINER // -->
-                                            <table border="0" cellpadding="0" cellspacing="0" width="600" class="flexibleContainer">
+                                        <td align="center" valign="top" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                            <table border="0" cellpadding="0" cellspacing="0" width="600" class="flexibleContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
                                                 <tr>
-                                                    <td valign="top" width="600" class="flexibleContainerCell">
-                                                        <!-- CONTENT TABLE // -->
-                                                        <table align="Left" border="0" cellpadding="0" cellspacing="0" width="260" class="flexibleContainer">
-                                                            <tr>
-                                                                <td valign="top" class="">
-                                                                    <a href="#"><img src="http://psdwizard.net/preview/dco-email/03/images/shopByColor.png" alt="Shop by color" class="flexibleImage"></a>
+                                                    <td valign="top" width="600" class="flexibleContainerCell" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;padding-top: 20px;padding-right: 20px;padding-left: 20px;">
+                                                        <table id="footer-1" align="Left" border="0" cellpadding="0" cellspacing="0" width="270" class="flexibleContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                            <tr style="background-color:#F99F27;">
+                                                                <td style="padding-top:10px;padding-right: 10px;padding-bottom:10px;padding-left:10px;border-radius: 5px 0 0 5px;color:#fff;">
+                                                                    <a href="#" style="text-decoration:none;color:#fff;"><span>Shop by Color</span></a>
+                                                                </td>
+                                                                <td valign="top" class="" style="text-align:right;padding-top:10px;padding-right: 10px;padding-bottom:10px;padding-left:10px; border-radius: 0 5px 5px 0;">
+                                                                    <a href="#"><img src="http://psdwizard.net/preview/dco-email/03/images/chevron-right.png"></a>
                                                                 </td>
                                                             </tr>
                                                         </table>
-                                                        <!-- // CONTENT TABLE -->
 
-                                                        <!-- CONTENT TABLE // -->
-                                                        <table align="Left" border="0" cellpadding="0" cellspacing="0" width="260" class="flexibleContainer">
-                                                            <tr>
-                                                                <td valign="top" class="">
-                                                                    <a href="#"><img src="http://psdwizard.net/preview/dco-email/03/images/shopByHand.png" alt="Shop by brand" class="flexibleImage"></a>
+                                                        <table id="footer-2" align="Right" border="0" cellpadding="0" cellspacing="0" width="270" class="flexibleContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                            <tr style="background-color:#F99F27;">
+                                                                <td style="padding-top:10px;padding-right: 10px;padding-bottom:10px;padding-left:10px;border-radius: 5px 0 0 5px;color:#fff;">
+                                                                    <a href="#" style="text-decoration:none;color:#fff;"><span>Shop by Brand</span></a>
+                                                                </td>
+                                                                <td valign="top" class="" style="text-align:right;padding-top:10px;padding-right: 10px;padding-bottom:10px;padding-left:10px; border-radius: 0 5px 5px 0;">
+                                                                    <a href="#"><img src="http://psdwizard.net/preview/dco-email/03/images/chevron-right.png"></a>
                                                                 </td>
                                                             </tr>
                                                         </table>
-                                                        <!-- // CONTENT TABLE -->
-
-                                                        <!-- CONTENT TABLE // -->
-                                                        <table align="Left" border="0" cellpadding="0" cellspacing="0" width="260" class="flexibleContainer">
-                                                            <tr>
-                                                                <td valign="top" class="">
-                                                                    <a href="#"><img src="http://psdwizard.net/preview/dco-email/03/images/newArrival.png" alt="New arrival" class="flexibleImage"></a>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                        <!-- // CONTENT TABLE -->
-
-                                                        <!-- CONTENT TABLE // -->
-                                                        <table align="Left" border="0" cellpadding="0" cellspacing="0" width="260" class="flexibleContainer">
-                                                            <tr>
-                                                                <td valign="top" class="">
-                                                                    <a href="#"><img src="http://psdwizard.net/preview/dco-email/03/images/saleProducts.png" alt="Sale products" class="flexibleImage"></a>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                        <!-- // CONTENT TABLE -->
                                                     </td>
                                                 </tr>
                                             </table>
-                                            <!-- // FLEXIBLE CONTAINER -->
                                         </td>
                                     </tr>
                                 </table>
-                                <!-- // CENTERING TABLE -->
+                            </td>
+                        </tr>
+                        <!-- // MODULE ROW -->
+
+                        <!-- MODULE ROW // -->
+                        <tr>
+                            <td align="center" valign="top" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                    <tr>
+                                        <td align="center" valign="top" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                            <table border="0" cellpadding="0" cellspacing="0" width="600" class="flexibleContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                <tr>
+                                                    <td valign="top" width="600" class="flexibleContainerCell break" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;padding-top: 20px;padding-right: 20px;padding-left: 20px;">
+                                                        <table id="footer-3" align="Left" border="0" cellpadding="0" cellspacing="0" width="270" class="flexibleContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                            <tr style="background-color:#F99F27;">
+                                                                <td style="padding-top:10px;padding-right: 10px;padding-bottom:10px;padding-left:10px;border-radius: 5px 0 0 5px;color:#fff;">
+                                                                    <a href="#" style="text-decoration:none;color:#fff;"><span>New Arrival</span></a>
+                                                                </td>
+                                                                <td valign="top" class="" style="text-align:right;padding-top:10px;padding-right: 10px;padding-bottom:10px;padding-left:10px; border-radius: 0 5px 5px 0;">
+                                                                    <a href="#"><img src="http://psdwizard.net/preview/dco-email/03/images/chevron-right.png"></a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+
+                                                        <table id="footer-4" align="Right" border="0" cellpadding="0" cellspacing="0" width="270" class="flexibleContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                            <tr style="background-color:#F99F27;">
+                                                                <td style="padding-top:10px;padding-right: 10px;padding-bottom:10px;padding-left:10px;border-radius: 5px 0 0 5px;color:#fff;">
+                                                                    <a href="#" style="text-decoration:none;color:#fff;"><span>Sale Products</span></a>
+                                                                </td>
+                                                                <td valign="top" class="" style="text-align:right;padding-top:10px;padding-right: 10px;padding-bottom:10px;padding-left:10px; border-radius: 0 5px 5px 0;">
+                                                                    <a href="#"><img src="http://psdwizard.net/preview/dco-email/03/images/chevron-right.png"></a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
                             </td>
                         </tr>
                         <!-- // MODULE ROW -->
