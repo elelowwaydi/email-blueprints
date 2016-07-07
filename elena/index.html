@@ -94,17 +94,19 @@
         /*////// FRAMEWORK STYLES //////*/
 
         .flexibleContainerCell {
-            padding-top: 20px;
+            padding-top: 35px;
             padding-Right: 20px;
             padding-Left: 20px;
         }
 
         .flexibleImage {
             height: auto;
+            width: 100%;
+            max-width: 600px;
         }
 
         .bottomShim {
-            padding-bottom: 20px;
+            padding-bottom: 35px;
         }
 
         .imageContent,
@@ -118,11 +120,6 @@
             padding-Left: 20px;
         }
         /*////// GENERAL STYLES //////*/
-
-        body,
-        #bodyTable {
-            background-color: #F5F5F5;
-        }
 
         #bodyCell {
             padding-top: 40px;
@@ -142,7 +139,7 @@
         h4,
         h5,
         h6 {
-            color: #202020;
+            color: #384048;
             font-family: Helvetica;
             font-size: 20px;
             line-height: 125%;
@@ -157,17 +154,6 @@
             line-height: 125%;
             text-align: Left;
             padding-bottom: 20px;
-        }
-
-        .textContent a,
-        .textContentLast a {
-            color: #2C9AB7;
-            text-decoration: underline;
-        }
-
-        .nestedContainer {
-            background-color: #E5E5E5;
-            border: 1px solid #CCCCCC;
         }
 
         .emailButton {
@@ -218,9 +204,81 @@
             padding-bottom: 20px;
             text-align: center;
         }
+        /*user defined styles and overrides*/
+
+        hr {
+            margin-bottom: 30px;
+            border-color: rgba(101, 101, 101, 0.15);
+        }
+
+        p {
+            margin-bottom: 25px;
+            color: #787b80;
+            font-size: 13px;
+        }
+
+        a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        h5 {
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            width: 100px;
+            padding: 8px 3px;
+            border-radius: 23px;
+            color: #fff;
+            font-size: 13px;
+            font-family: Helvetica;
+            background-color: #D2D5DA;
+            text-align: center;
+        }
+
+        .btn-colored {
+            background-color: #59C3B5;
+        }
+
+        .feature-container {
+            background-color: #F5F5F5;
+        }
+
+        .feature-container .thumbnail h5 {
+            margin-top: 30px;
+        }
+
+        .support-container {
+            background-color: #EEEEF0;
+        }
+
+        .support-container .icon {
+            margin-bottom: -4px;
+        }
+
+        .send-container {
+            background-color: #EEEEF0;
+        }
+
+        .send-container .icon {
+            margin-bottom: -4px;
+        }
         /*////// MOBILE STYLES //////*/
 
         @media only screen and (max-width: 480px) {
+            .thumbnail {
+                -webkit-margin-start: auto;
+                -webkit-margin-end: auto;
+                border-top-width: 0px;
+                border-right-width: 0px;
+                border-bottom-width: 0px;
+                border-left-width: 0px;
+                width: 100%;
+                border-spacing: 0px;
+                float: none;
+            }
             /*////// CLIENT-SPECIFIC STYLES //////*/
             body {
                 width: 100% !important;
@@ -381,233 +439,25 @@
                                     <tr>
                                         <td align="center" valign="top">
                                             <!-- FLEXIBLE CONTAINER // -->
-                                            <table border="0" cellpadding="0" cellspacing="0" width="600" class="flexibleContainer">
-                                                <tr>
-                                                    <td valign="top" width="600" class="flexibleContainerCell">
-
-
-                                                        <!-- CONTENT TABLE // -->
-                                                        <!--
-                                                            	In multi-column content blocks, the
-                                                                content tables are given set widths
-                                                                and the flexibleContainer class.
-                                                            -->
-                                                        <table align="Left" border="0" cellpadding="0" cellspacing="0" width="260" class="flexibleContainer">
-                                                            <tr>
-                                                                <td valign="top" class="textContent">
-                                                                    <h3>Left Column</h3>
-                                                                    <br /> A kitten or kitty is a juvenile domesticated cat. A feline litter usually consists of two to five kittens. To survive, kittens need the care of their mother for the first several weeks
-                                                                    of their life. Kittens are highly social animals and spend most of their waking hours playing and interacting with available companions.
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                        <!-- // CONTENT TABLE -->
-
-
-                                                        <!-- CONTENT TABLE // -->
-                                                        <table align="Right" border="0" cellpadding="0" cellspacing="0" width="260" class="flexibleContainer">
-                                                            <tr>
-                                                                <td valign="top" class="textContentLast">
-                                                                    <h3>Right Column</h3>
-                                                                    <br /> A kitten or kitty is a juvenile domesticated cat. A feline litter usually consists of two to five kittens. To survive, kittens need the care of their mother for the first several weeks
-                                                                    of their life. Kittens are highly social animals and spend most of their waking hours playing and interacting with available companions.
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                        <!-- // CONTENT TABLE -->
-
-
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                            <!-- // FLEXIBLE CONTAINER -->
-                                        </td>
-                                    </tr>
-                                </table>
-                                <!-- // CENTERING TABLE -->
-                            </td>
-                        </tr>
-                        <!-- // MODULE ROW -->
-
-
-                        <!-- MODULE ROW // -->
-                        <tr>
-                            <td align="center" valign="top">
-                                <!-- CENTERING TABLE // -->
-                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                    <tr>
-                                        <td align="center" valign="top">
-                                            <!-- FLEXIBLE CONTAINER // -->
-                                            <table border="0" cellpadding="0" cellspacing="0" width="600" class="flexibleContainer">
-                                                <tr>
-                                                    <td align="center" valign="top" width="600" class="flexibleContainerCell bottomShim">
-
-
-                                                        <!-- CONTENT TABLE // -->
-                                                        <!--
-                                                            	The emailButton table's width can be changed
-                                                                to affect the look of the button. To make the
-                                                                button width dependent on the text inside, leave
-                                                                the width blank. When a button is placed in a column,
-                                                                it's helpful to set the width to 100%.
-                                                            -->
-                                                        <table border="0" cellpadding="0" cellspacing="0" width="260" class="emailButton">
-                                                            <tr>
-                                                                <td align="center" valign="middle" class="buttonContent">
-                                                                    <a href="#" target="_blank">Purchase Now</a>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                        <!-- // CONTENT TABLE -->
-
-
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                            <!-- // FLEXIBLE CONTAINER -->
-                                        </td>
-                                    </tr>
-                                </table>
-                                <!-- // CENTERING TABLE -->
-                            </td>
-                        </tr>
-                        <!-- // MODULE ROW -->
-
-
-                        <!-- MODULE ROW // -->
-                        <tr>
-                            <td align="center" valign="top">
-                                <!-- CENTERING TABLE // -->
-                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                    <tr>
-                                        <td align="center" valign="top">
-                                            <!-- FLEXIBLE CONTAINER // -->
-                                            <table border="0" cellpadding="0" cellspacing="0" width="600" class="flexibleContainer">
-                                                <tr>
-                                                    <td align="center" valign="top" width="600" class="flexibleContainerCell bottomShim">
-                                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" class="nestedContainer">
-                                                            <tr>
-                                                                <td align="center" valign="top" class="nestedContainerCell">
-
-
-                                                                    <!-- CONTENT TABLE // -->
-                                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                                                        <tr>
-                                                                            <td valign="top" class="textContent">
-                                                                                <h3>Title</h3>
-                                                                                <br /> A kitten or kitty is a juvenile domesticated cat. A feline litter usually consists of two to five kittens. To survive, kittens need the care of their mother for the first
-                                                                                several weeks of their life. Kittens are highly social animals and spend most of their waking hours playing and interacting with available companions.
-                                                                            </td>
-                                                                        </tr>
-                                                                    </table>
-                                                                    <!-- // CONTENT TABLE -->
-
-
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                            <!-- // FLEXIBLE CONTAINER -->
-                                        </td>
-                                    </tr>
-                                </table>
-                                <!-- // CENTERING TABLE -->
-                            </td>
-                        </tr>
-                        <!-- // MODULE ROW -->
-
-
-                        <!-- MODULE ROW // -->
-                        <tr>
-                            <td align="center" valign="top">
-                                <!-- CENTERING TABLE // -->
-                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                    <tr>
-                                        <td align="center" valign="top">
-                                            <!-- FLEXIBLE CONTAINER // -->
-                                            <table border="0" cellpadding="0" cellspacing="0" width="600" class="flexibleContainer">
+                                            <table border="0" cellpadding="0" cellspacing="0" width="600" class="flexibleContainer  feature-container">
                                                 <tr>
                                                     <td align="center" valign="top" width="600" class="flexibleContainerCell bottomShim">
                                                         <table border="0" cellpadding="0" cellspacing="0" width="100%" class="nestedContainer">
                                                             <tr>
                                                                 <td valign="top" class="nestedContainerCell">
 
-
                                                                     <!-- CONTENT TABLE // -->
-                                                                    <table align="Left" border="0" cellpadding="0" cellspacing="0" width="240" class="flexibleContainer">
+                                                                    <table align="Left" border="0" cellpadding="0" cellspacing="0" width="240" class="flexibleContainer thumbnail">
                                                                         <tr>
-                                                                            <td valign="top" class="textContent">
-                                                                                <h3>Left Column</h3>
-                                                                                <br /> A kitten or kitty is a juvenile domesticated cat. A feline litter usually consists of two to five kittens. To survive, kittens need the care of their mother for the first
-                                                                                several weeks of their life. Kittens are highly social animals and spend most of their waking hours playing and interacting with available companions.
-                                                                            </td>
-                                                                        </tr>
-                                                                    </table>
-                                                                    <!-- // CONTENT TABLE -->
-
-
-                                                                    <!-- CONTENT TABLE // -->
-                                                                    <table align="Right" border="0" cellpadding="0" cellspacing="0" width="240" class="flexibleContainer">
-                                                                        <tr>
-                                                                            <td valign="top" class="textContentLast">
-                                                                                <h3>Right Column</h3>
-                                                                                <br /> A kitten or kitty is a juvenile domesticated cat. A feline litter usually consists of two to five kittens. To survive, kittens need the care of their mother for the first
-                                                                                several weeks of their life. Kittens are highly social animals and spend most of their waking hours playing and interacting with available companions.
-                                                                            </td>
-                                                                        </tr>
-                                                                    </table>
-                                                                    <!-- // CONTENT TABLE -->
-
-
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                            <!-- // FLEXIBLE CONTAINER -->
-                                        </td>
-                                    </tr>
-                                </table>
-                                <!-- // CENTERING TABLE -->
-                            </td>
-                        </tr>
-                        <!-- // MODULE ROW -->
-
-
-                        <!-- MODULE ROW // -->
-                        <tr>
-                            <td align="center" valign="top">
-                                <!-- CENTERING TABLE // -->
-                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                    <tr>
-                                        <td align="center" valign="top">
-                                            <!-- FLEXIBLE CONTAINER // -->
-                                            <table border="0" cellpadding="0" cellspacing="0" width="600" class="flexibleContainer">
-                                                <tr>
-                                                    <td align="center" valign="top" width="600" class="flexibleContainerCell bottomShim">
-                                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" class="nestedContainer">
-                                                            <tr>
-                                                                <td align="center" valign="top" class="nestedContainerCell">
-
-
-                                                                    <!-- CONTENT TABLE // -->
-                                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                                                        <tr>
-                                                                            <td valign="top" class="textContent">
-                                                                                <h3>Callout</h3>
-                                                                                <br /> A kitten or kitty is a juvenile domesticated cat. A feline litter usually consists of two to five kittens. To survive, kittens need the care of their mother for the first
-                                                                                several weeks of their life. Kittens are highly social animals and spend most of their waking hours playing and interacting with available companions.
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td align="center" valign="top" class="bottomShim">
-                                                                                <table border="0" cellpadding="0" cellspacing="0" width="260" class="emailButton">
+                                                                            <td align="center" valign="top" class="textContent">
+                                                                                <img src="http://templates.impulsion.be/newsletters/003elena/img/img-1.jpg" class="flexibleImage">
+                                                                                <h5>RESPONSIVE EMAIL TEMPLATE</h5>
+                                                                                <hr>
+                                                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec iterdum mollis</p>
+                                                                                <table border="0" cellpadding="0" cellspacing="0" class="nestedContainer">
                                                                                     <tr>
-                                                                                        <td align="center" valign="middle" class="buttonContent">
-                                                                                            <a href="#" target="_blank">Purchase Now</a>
+                                                                                        <td align="center" valign="top" class="btn btn-colored">
+                                                                                            <a href="#" target="_blank">Read more</a>
                                                                                         </td>
                                                                                     </tr>
                                                                                 </table>
@@ -617,6 +467,25 @@
                                                                     <!-- // CONTENT TABLE -->
 
 
+                                                                    <!-- CONTENT TABLE // -->
+                                                                    <table align="Right" border="0" cellpadding="0" cellspacing="0" width="240" class="flexibleContainer thumbnail">
+                                                                        <tr>
+                                                                            <td align="center" valign="top" class="textContent">
+                                                                                <img src="http://templates.impulsion.be/newsletters/003elena/img/img-2.jpg" class="flexibleImage">
+                                                                                <h5>RESPONSIVE EMAIL TEMPLATE</h5>
+                                                                                <hr>
+                                                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec iterdum mollis</p>
+                                                                                <table border="0" cellpadding="0" cellspacing="0" class="nestedContainer">
+                                                                                    <tr>
+                                                                                        <td align="center" valign="top" class="btn btn-colored">
+                                                                                            <a href="#" target="_blank">Read more</a>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                    <!-- // CONTENT TABLE -->
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -632,7 +501,6 @@
                         </tr>
                         <!-- // MODULE ROW -->
 
-
                         <!-- MODULE ROW // -->
                         <tr>
                             <td align="center" valign="top">
@@ -641,332 +509,98 @@
                                     <tr>
                                         <td align="center" valign="top">
                                             <!-- FLEXIBLE CONTAINER // -->
-                                            <table border="0" cellpadding="0" cellspacing="0" width="600" class="flexibleContainer">
-                                                <tr>
-                                                    <td align="center" valign="top" width="600" class="flexibleContainerCell">
-
-
-                                                        <!-- CONTENT TABLE // -->
-                                                        <!--
-                                                            	The table cell imageContent has padding
-                                                                applied to the bottom as part of the framework,
-                                                                ensuring images space correctly in Android Gmail.
-                                                            -->
-                                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                                            <tr>
-                                                                <td valign="top" class="imageContent">
-                                                                    <img src="http://placekitten.com/g/1120/800" width="560" class="flexibleImage" style="max-width:560px;" />
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                        <!-- // CONTENT TABLE -->
-
-
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                            <!-- // FLEXIBLE CONTAINER -->
-                                        </td>
-                                    </tr>
-                                </table>
-                                <!-- // CENTERING TABLE -->
-                            </td>
-                        </tr>
-                        <!-- // MODULE ROW -->
-
-
-                        <!-- MODULE ROW // -->
-                        <tr>
-                            <td align="center" valign="top">
-                                <!-- CENTERING TABLE // -->
-                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                    <tr>
-                                        <td align="center" valign="top">
-                                            <!-- FLEXIBLE CONTAINER // -->
-                                            <table border="0" cellpadding="0" cellspacing="0" width="600" class="flexibleContainer">
-                                                <tr>
-                                                    <td align="center" valign="top" width="600" class="flexibleContainerCell">
-
-
-                                                        <!-- CONTENT TABLE // -->
-                                                        <table align="Left" border="0" cellpadding="0" cellspacing="0" width="260" class="flexibleContainer">
-                                                            <tr>
-                                                                <td align="Left" valign="top" class="imageContent">
-                                                                    <img src="http://placekitten.com/g/520/520" width="260" class="flexibleImage" style="max-width:260px;" />
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                        <!-- // CONTENT TABLE -->
-
-
-                                                        <!-- CONTENT TABLE // -->
-                                                        <table align="Right" border="0" cellpadding="0" cellspacing="0" width="260" class="flexibleContainer">
-                                                            <tr>
-                                                                <td align="Left" valign="top" class="imageContentLast">
-                                                                    <img src="http://placekitten.com/g/520/520" width="260" class="flexibleImage" style="max-width:260px;" />
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                        <!-- // CONTENT TABLE -->
-
-
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                            <!-- // FLEXIBLE CONTAINER -->
-                                        </td>
-                                    </tr>
-                                </table>
-                                <!-- // CENTERING TABLE -->
-                            </td>
-                        </tr>
-                        <!-- // MODULE ROW -->
-
-
-                        <!-- MODULE ROW // -->
-                        <tr>
-                            <td align="center" valign="top">
-                                <!-- CENTERING TABLE // -->
-                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                    <tr>
-                                        <td align="center" valign="top">
-                                            <!-- FLEXIBLE CONTAINER // -->
-                                            <table border="0" cellpadding="0" cellspacing="0" width="600" class="flexibleContainer">
-                                                <tr>
-                                                    <td align="center" valign="top" width="600" class="flexibleContainerCell">
-
-
-                                                        <!-- CONTENT TABLE // -->
-                                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                                            <tr>
-                                                                <td valign="top" class="imageContentLast">
-                                                                    <img src="http://placekitten.com/g/1120/800" width="560" class="flexibleImage" style="max-width:560px;" />
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td valign="top" class="textContent">
-                                                                    <h3>Title</h3>
-                                                                    <br /> A kitten or kitty is a juvenile domesticated cat. A feline litter usually consists of two to five kittens. To survive, kittens need the care of their mother for the first several weeks
-                                                                    of their life. Kittens are highly social animals and spend most of their waking hours playing and interacting with available companions.
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                        <!-- // CONTENT TABLE -->
-
-
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                            <!-- // FLEXIBLE CONTAINER -->
-                                        </td>
-                                    </tr>
-                                </table>
-                                <!-- // CENTERING TABLE -->
-                            </td>
-                        </tr>
-                        <!-- // MODULE ROW -->
-
-
-                        <!-- MODULE ROW // -->
-                        <tr>
-                            <td align="center" valign="top">
-                                <!-- CENTERING TABLE // -->
-                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                    <tr>
-                                        <td align="center" valign="top">
-                                            <!-- FLEXIBLE CONTAINER // -->
-                                            <table border="0" cellpadding="0" cellspacing="0" width="600" class="flexibleContainer">
-                                                <tr>
-                                                    <td valign="top" width="600" class="flexibleContainerCell">
-
-
-                                                        <!-- CONTENT TABLE // -->
-                                                        <table align="Left" border="0" cellpadding="0" cellspacing="0" width="260" class="flexibleContainer">
-                                                            <tr>
-                                                                <td valign="top" class="imageContent">
-                                                                    <img src="http://placekitten.com/g/520/520" width="260" class="flexibleImage" style="max-width:260px;" />
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td valign="top" class="textContent">
-                                                                    <h3>Left Column</h3>
-                                                                    <br /> A kitten or kitty is a juvenile domesticated cat. A feline litter usually consists of two to five kittens. To survive, kittens need the care of their mother for the first several weeks
-                                                                    of their life. Kittens are highly social animals and spend most of their waking hours playing and interacting with available companions.
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                        <!-- // CONTENT TABLE -->
-
-
-                                                        <!-- CONTENT TABLE // -->
-                                                        <table align="Right" border="0" cellpadding="0" cellspacing="0" width="260" class="flexibleContainer">
-                                                            <tr>
-                                                                <td valign="top" class="imageContentLast">
-                                                                    <img src="http://placekitten.com/g/520/520" width="260" class="flexibleImage" style="max-width:260px;" />
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td valign="top" class="textContent">
-                                                                    <h3>Right Column</h3>
-                                                                    <br /> A kitten or kitty is a juvenile domesticated cat. A feline litter usually consists of two to five kittens. To survive, kittens need the care of their mother for the first several weeks
-                                                                    of their life. Kittens are highly social animals and spend most of their waking hours playing and interacting with available companions.
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                        <!-- // CONTENT TABLE -->
-
-
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                            <!-- // FLEXIBLE CONTAINER -->
-                                        </td>
-                                    </tr>
-                                </table>
-                                <!-- // CENTERING TABLE -->
-                            </td>
-                        </tr>
-                        <!-- // MODULE ROW -->
-
-
-                        <!-- MODULE ROW // -->
-                        <tr>
-                            <td align="center" valign="top">
-                                <!-- CENTERING TABLE // -->
-                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                    <tr>
-                                        <td align="center" valign="top">
-                                            <!-- FLEXIBLE CONTAINER // -->
-                                            <table border="0" cellpadding="0" cellspacing="0" width="600" class="flexibleContainer">
-                                                <tr>
-                                                    <td valign="top" width="600" class="flexibleContainerCell">
-
-
-                                                        <!-- CONTENT TABLE // -->
-                                                        <table align="Left" border="0" cellpadding="0" cellspacing="0" width="200" class="flexibleContainer">
-                                                            <tr>
-                                                                <td align="Left" valign="top" class="imageContent">
-                                                                    <img src="http://placekitten.com/g/400/400" width="200" class="flexibleImage" style="max-width:200px;" />
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                        <!-- // CONTENT TABLE -->
-
-
-                                                        <!-- CONTENT TABLE // -->
-                                                        <table align="Right" border="0" cellpadding="0" cellspacing="0" width="340" class="flexibleContainer">
-                                                            <tr>
-                                                                <td valign="top" class="textContent">
-                                                                    <h3>Right Column</h3>
-                                                                    <br /> A kitten or kitty is a juvenile domesticated cat. Kittens are highly social animals and spend most of their waking hours playing and interacting with available companions.
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                        <!-- // CONTENT TABLE -->
-
-
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                            <!-- // FLEXIBLE CONTAINER -->
-                                        </td>
-                                    </tr>
-                                </table>
-                                <!-- // CENTERING TABLE -->
-                            </td>
-                        </tr>
-                        <!-- // MODULE ROW -->
-
-
-                        <!-- MODULE ROW // -->
-                        <tr>
-                            <td align="center" valign="top">
-                                <!-- CENTERING TABLE // -->
-                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                    <tr>
-                                        <td align="center" valign="top">
-                                            <!-- FLEXIBLE CONTAINER // -->
-                                            <table border="0" cellpadding="0" cellspacing="0" width="600" class="flexibleContainer">
-                                                <tr>
-                                                    <td valign="top" width="600" class="flexibleContainerCell">
-
-
-                                                        <!-- CONTENT TABLE // -->
-                                                        <!--
-                                                            	Keeping the table markup in its original
-                                                                order and swapping the align attribute values
-                                                                allows the tables to wrap in the correct order
-                                                                on small displays.
-                                                            -->
-                                                        <table align="Right" border="0" cellpadding="0" cellspacing="0" width="200" class="flexibleContainer">
-                                                            <tr>
-                                                                <td align="Left" valign="top" class="imageContent">
-                                                                    <img src="http://placekitten.com/g/400/400" width="200" class="flexibleImage" style="max-width:200px;" />
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                        <!-- // CONTENT TABLE -->
-
-
-                                                        <!-- CONTENT TABLE // -->
-                                                        <table align="Left" border="0" cellpadding="0" cellspacing="0" width="340" class="flexibleContainer">
-                                                            <tr>
-                                                                <td valign="top" class="textContent">
-                                                                    <h3>Left Column</h3>
-                                                                    <br /> A kitten or kitty is a juvenile domesticated cat. Kittens are highly social animals and spend most of their waking hours playing and interacting with available companions.
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                        <!-- // CONTENT TABLE -->
-
-
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                            <!-- // FLEXIBLE CONTAINER -->
-                                        </td>
-                                    </tr>
-                                </table>
-                                <!-- // CENTERING TABLE -->
-                            </td>
-                        </tr>
-                        <!-- // MODULE ROW -->
-
-
-                        <!-- MODULE ROW // -->
-                        <tr>
-                            <td align="center" valign="top">
-                                <!-- CENTERING TABLE // -->
-                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                    <tr>
-                                        <td align="center" valign="top">
-                                            <!-- FLEXIBLE CONTAINER // -->
-                                            <table border="0" cellpadding="0" cellspacing="0" width="600" class="flexibleContainer">
+                                            <table border="0" cellpadding="0" cellspacing="0" width="600" class="flexibleContainer support-container">
                                                 <tr>
                                                     <td align="center" valign="top" width="600" class="flexibleContainerCell bottomShim">
                                                         <table border="0" cellpadding="0" cellspacing="0" width="100%" class="nestedContainer">
                                                             <tr>
                                                                 <td align="center" valign="top" class="nestedContainerCell">
-
-
                                                                     <!-- CONTENT TABLE // -->
                                                                     <table border="0" cellpadding="0" cellspacing="0" width="100%">
                                                                         <tr>
-                                                                            <td valign="top" class="imageContent">
-                                                                                <img src="http://placekitten.com/g/1040/800" width="520" class="flexibleImage" style="max-width:520px;" />
+                                                                            <td valign="top" class="textContent">
+                                                                                <h5><img src="http://templates.impulsion.be/newsletters/003elena/img/icon-support.png" class="icon">FULLY SUPPORTED TEMPLATE</h5>
+                                                                                <hr>
+                                                                                <p>
+                                                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada sodales risus, a adipiscing lorem commodo vitae, Ut semper semper lacus. Suspendisse convallis vel tellus at consectetur. Aenean risus arcu
+                                                                                </p>
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td class="btn">
+                                                                                            Read more
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
                                                                             </td>
                                                                         </tr>
+                                                                    </table>
+                                                                    <!-- // CONTENT TABLE -->
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <!-- // FLEXIBLE CONTAINER -->
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <!--- // MODULE ROW -->
+
+                        <!-- MODULE ROW // -->
+                        <tr>
+                            <td align="center" valign="top">
+                                <!-- CENTERING TABLE // -->
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    <tr>
+                                        <td align="center" valign="top">
+                                            <!-- FLEXIBLE CONTAINER // -->
+                                            <table border="0" cellpadding="0" cellspacing="0" width="600" class="flexibleContainer  send-container">
+                                                <tr>
+                                                    <td align="center" valign="top" width="600" class="flexibleContainerCell bottomShim">
+                                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" class="nestedContainer">
+                                                            <tr>
+                                                                <td valign="top" class="nestedContainerCell">
+
+                                                                    <!-- CONTENT TABLE // -->
+                                                                    <table align="Left" border="0" cellpadding="0" cellspacing="0" width="240" class="flexibleContainer thumbnail">
                                                                         <tr>
-                                                                            <td valign="top" class="textContent">
-                                                                                <h3>Title</h3>
-                                                                                <br /> A kitten or kitty is a juvenile domesticated cat. A feline litter usually consists of two to five kittens. To survive, kittens need the care of their mother for the first
-                                                                                several weeks of their life. Kittens are highly social animals and spend most of their waking hours playing and interacting with available companions.
+                                                                            <td align="center" valign="top" class="textContent">
+                                                                                <h5><img src="http://templates.impulsion.be/newsletters/003elena/img/icon-airplane.png" class="icon">VERY NICE TO SEE</h5>
+                                                                                <hr>
+                                                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec iterdum mollis</p>
+                                                                                <table border="0" cellpadding="0" cellspacing="0" class="nestedContainer">
+                                                                                    <tr>
+                                                                                        <td align="center" class="btn btn-colored">
+                                                                                            <a href="#" target="_blank">Read more</a>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
                                                                             </td>
                                                                         </tr>
                                                                     </table>
                                                                     <!-- // CONTENT TABLE -->
 
-
+                                                                    <!-- CONTENT TABLE // -->
+                                                                    <table align="Right" border="0" cellpadding="0" cellspacing="0" width="240" class="flexibleContainer thumbnail">
+                                                                        <tr>
+                                                                            <td align="center" valign="top" class="textContent">
+                                                                                <h5><img src="http://templates.impulsion.be/newsletters/003elena/img/icon-pen.png" class="icon">VERY NICE TO SEE</h5>
+                                                                                <hr>
+                                                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec iterdum mollis</p>
+                                                                                <table border="0" cellpadding="0" cellspacing="0" class="nestedContainer">
+                                                                                    <tr>
+                                                                                        <td align="center" valign="top" class="btn btn-colored">
+                                                                                            <a href="#" target="_blank">Read more</a>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                    <!-- // CONTENT TABLE -->
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -1003,14 +637,7 @@
                                                                     <table align="Left" border="0" cellpadding="0" cellspacing="0" width="240" class="flexibleContainer">
                                                                         <tr>
                                                                             <td valign="top" class="imageContent">
-                                                                                <img src="http://placekitten.com/g/480/480" width="240" class="flexibleImage" style="max-width:240px;" />
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td valign="top" class="textContent">
-                                                                                <h3>Left Column</h3>
-                                                                                <br /> A kitten or kitty is a juvenile domesticated cat. A feline litter usually consists of two to five kittens. To survive, kittens need the care of their mother for the first
-                                                                                several weeks of their life. Kittens are highly social animals and spend most of their waking hours playing and interacting with available companions.
+                                                                                <img src="img/img-6.jpg" width="240" class="flexibleImage" style="max-width:240px;" />
                                                                             </td>
                                                                         </tr>
                                                                     </table>
@@ -1020,15 +647,18 @@
                                                                     <!-- CONTENT TABLE // -->
                                                                     <table align="Right" border="0" cellpadding="0" cellspacing="0" width="240" class="flexibleContainer">
                                                                         <tr>
-                                                                            <td valign="top" class="imageContentLast">
-                                                                                <img src="http://placekitten.com/g/480/480" width="240" class="flexibleImage" style="max-width:240px;" />
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
                                                                             <td valign="top" class="textContent">
-                                                                                <h3>Right Column</h3>
-                                                                                <br /> A kitten or kitty is a juvenile domesticated cat. A feline litter usually consists of two to five kittens. To survive, kittens need the care of their mother for the first
-                                                                                several weeks of their life. Kittens are highly social animals and spend most of their waking hours playing and interacting with available companions.
+                                                                                <h5>JUST FOR YOU ON THEMEFOREST</h5>
+                                                                                <hr>
+                                                                                <p>
+                                                                                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum risus, in mattis erat convallis egestas.
+                                                                                  <table>
+                                                                                    <tr>
+                                                                                      <td class="btn">
+                                                                                        Read more
+                                                                                      </td>
+                                                                                    </tr>
+                                                                                  </table>
                                                                             </td>
                                                                         </tr>
                                                                     </table>
@@ -1247,8 +877,6 @@
                                                         <table border="0" cellpadding="0" cellspacing="0" width="100%" class="nestedContainer">
                                                             <tr>
                                                                 <td valign="top" class="nestedContainerCell">
-
-
                                                                     <!-- CONTENT TABLE // -->
                                                                     <table align="Right" border="0" cellpadding="0" cellspacing="0" width="160" class="flexibleContainer">
                                                                         <tr>
@@ -1287,8 +915,6 @@
                                                                         </tr>
                                                                     </table>
                                                                     <!-- // CONTENT TABLE -->
-
-
                                                                 </td>
                                                             </tr>
                                                         </table>
